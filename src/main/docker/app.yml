@@ -1,0 +1,14 @@
+version: '2'
+services:
+    ase-app:
+        image: ase
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://ase-postgresql:5432/ase
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    ase-postgresql:
+        extends:
+            file: postgresql.yml
+            service: ase-postgresql
